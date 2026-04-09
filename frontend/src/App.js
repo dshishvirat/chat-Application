@@ -33,7 +33,7 @@ function App() {
 
   useEffect(()=>{
     if(authUser){
-      const socketio = io(`${BASE_URL}`, {
+      const socketio = io(`https://chatapp-backend-qgs2.onrender.com`, {
           query:{
             userId:authUser._id
           }
