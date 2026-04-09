@@ -7,10 +7,13 @@ import { Provider } from "react-redux";
 import store from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist';
+import axios from 'axios';
 
 let persistor = persistStore(store);
 
 export const BASE_URL="https://chatapp-backend-qgs2.onrender.com"
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
