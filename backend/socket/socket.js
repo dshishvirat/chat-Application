@@ -7,8 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors:{
-        origin:['chatapp-frontend-nu-sand.vercel.app'],
+        origin:['https://chatapp-frontend-git-main-devashishs-projects-b9180a99.vercel.app', 'http://localhost:3000'],
         methods:['GET', 'POST'],
+        credentials: true
     },
 });
 
