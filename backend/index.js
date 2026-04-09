@@ -16,7 +16,11 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:['https://chatapp-frontend-git-main-devashishs-projects-b9180a99.vercel.app', 'http://localhost:3000'],
+    origin:[
+      'https://chatapp-frontend-nu-sand.vercel.app',
+      'http://localhost:3000',
+      'http://localhost:3001'
+    ],
     credentials:true
 };
 app.use(cors(corsOption)); 
