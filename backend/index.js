@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
 app.use(cookieParser());
 const corsOption={
-    origin:['http://localhost:3000', 'http://localhost:3001'],
+    origin:['chatapp-frontend-nu-sand.vercel.app', 'chatapp-frontend-nu-sand.vercel.app'],
     credentials:true
 };
 app.use(cors(corsOption)); 
