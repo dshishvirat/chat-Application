@@ -22,7 +22,7 @@ const Signup = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://chatapp-backend-qgs2.onrender.com/api/v1/user/register", user, {
+      const res = await axios.post(`${BASE_URL}/api/v1/user/register`, user, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -109,7 +109,7 @@ const Signup = () => {
             />
           </div>
 
-          
+          {/* Gender */}
           <div className="flex items-center gap-4 my-4">
             <label className="flex items-center gap-2">
               <input

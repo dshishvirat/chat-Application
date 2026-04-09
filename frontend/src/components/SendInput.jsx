@@ -17,7 +17,7 @@ const SendInput = () => {
 
     try {
       const res = await axios.post(
-        `https://chatapp-backend-qgs2.onrender.com/api/v1/message/send/${selectedUser?._id}`,
+        `${BASE_URL}/api/v1/message/send/${selectedUser?._id}`,
         { message },
         {
           headers: { 'Content-Type': 'application/json' },
