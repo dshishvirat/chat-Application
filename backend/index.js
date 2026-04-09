@@ -18,12 +18,14 @@ app.use(cookieParser());
 const corsOption={
     origin:[
       'https://chatapp-frontend-nu-sand.vercel.app',
+      'https://chatapp-frontend-git-main-devashishs-projects-b9180a99.vercel.app',
       'http://localhost:3000',
       'http://localhost:3001'
     ],
     credentials:true
 };
-app.use(cors(corsOption)); 
+app.use(cors(corsOption));
+app.options('*', cors(corsOption)); 
 
 
 // routes
