@@ -17,6 +17,7 @@ import {
     key: 'root',
     version: 1,
     storage,
+    blacklist: ['socket'] // Don't persist socket state
   }
 
   const rootReducer = combineReducers({
