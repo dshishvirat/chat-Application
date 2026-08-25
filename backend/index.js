@@ -34,8 +34,13 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/message",messageRoute);
  
 
-server.listen(PORT, ()=>{
-    connectDB();
-    console.log(`Server listen at prot ${PORT}`);
-});
+connectDB()
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log(`Server listen at port ${PORT}`);
+    });
+  })
+  .catch(() => {
+    process.exit(1);
+  });
 
