@@ -29,6 +29,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Something went wrong");
+      return;
     }
 
     setUser({
@@ -45,7 +46,7 @@ const Login = () => {
       >
         <h1 className="text-3xl font-bold text-center">Login</h1>
 
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} autoComplete="on">
           <div>
             <label className="label p-2">
               <span className="text-base label-text">Username</span>
@@ -56,6 +57,8 @@ const Login = () => {
               className="w-full input input-bordered h-10"
               type="text"
               placeholder="Username"
+              autoComplete="username"
+              required
             />
           </div>
 
@@ -69,6 +72,8 @@ const Login = () => {
               className="w-full input input-bordered h-10"
               type="password"
               placeholder="Password"
+              autoComplete="current-password"
+              required
             />
           </div>
 

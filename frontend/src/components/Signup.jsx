@@ -21,6 +21,15 @@ const Signup = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    if (user.password !== user.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    if (!user.gender) {
+      toast.error("Please select a gender");
+      return;
+    }
+
     try {
       const res = await axios.post(`${BASE_URL}/api/v1/user/register`, user, {
         headers: {
@@ -30,11 +39,17 @@ const Signup = () => {
       });
 
       if (res.data.success) {
+        console.log("Signup successful:", res.data);
         navigate("/login");
         toast.success(res.data.message);
+      } else {
+        console.error("Signup failed:", res.data);
+        toast.error(res.data.message || "Signup failed");
       }
     } catch (error) {
+      console.error("Signup request failed:", error);
       toast.error(error?.response?.data?.message || "Something went wrong");
+      return;
     }
 
     setUser({
@@ -54,7 +69,7 @@ const Signup = () => {
       >
         <h1 className="text-3xl font-bold text-center">Signup</h1>
 
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} autoComplete="on">
           <div>
             <label className="label p-2">
               <span className="text-base label-text">Full Name</span>
@@ -65,6 +80,8 @@ const Signup = () => {
               className="w-full input input-bordered h-10"
               type="text"
               placeholder="Full Name"
+              autoComplete="name"
+              required
             />
           </div>
 
@@ -78,6 +95,8 @@ const Signup = () => {
               className="w-full input input-bordered h-10"
               type="text"
               placeholder="Username"
+              autoComplete="username"
+              required
             />
           </div>
 
@@ -91,6 +110,8 @@ const Signup = () => {
               className="w-full input input-bordered h-10"
               type="password"
               placeholder="Password"
+              autoComplete="new-password"
+              required
             />
           </div>
 
@@ -106,6 +127,8 @@ const Signup = () => {
               className="w-full input input-bordered h-10"
               type="password"
               placeholder="Confirm Password"
+              autoComplete="new-password"
+              required
             />
           </div>
 
@@ -117,6 +140,7 @@ const Signup = () => {
                 name="gender"
                 checked={user.gender === "male"}
                 onChange={() => handleCheckbox("male")}
+                required
               />
               Male
             </label>

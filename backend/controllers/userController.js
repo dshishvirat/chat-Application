@@ -34,7 +34,11 @@ export const register = async (req, res) => {
             success: true
         })
     } catch (error) {
-        console.log(error);
+        console.error("Register error:", error);
+        return res.status(500).json({
+            message: "Unable to create account",
+            success: false
+        });
     }
 };
 export const login = async (req, res) => {
